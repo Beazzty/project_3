@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Beazzty/project_3.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/Beazzty/project_3/issues"
+  },
+  "homepage": "https://github.com/Beazzty/project_3#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "graphql": "^16.10.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.16.0",
+    "mongoose": "^8.13.3"
+  }
+}
