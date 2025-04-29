@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/techmatchup');
+const connectionString = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/spanish_vocab_db';
 
-const db = mongoose.connection;
+mongoose.connect(connectionString);
 
-export default db;
+export default mongoose.connection;
