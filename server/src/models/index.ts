@@ -1,4 +1,4 @@
-import Tech from './Tech.js';
-import Matchup from './Matchup.js';
+import User from './User.js';
+import VocabSet from './VocabSet.js';
 
-export default { Tech, Matchup };
+export default { User, VocabSet };
