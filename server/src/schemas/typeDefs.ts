@@ -35,6 +35,16 @@ const typeDefs = `
     skillLevel: SkillLevel!
   }
 
+  input LoginInput {
+    username: String
+    passsword: String!
+  }
+
+  input SaveStatInput {
+    vocabId: ID!
+    correct: Boolean!
+  }
+
   type AuthPayload {
     token: String!
     user: User!
@@ -48,6 +58,8 @@ const typeDefs = `
 
   type Mutations {
     addUser(input: AddUserInput!): AuthPayload!
+    login(input: LoginInput!): AuthPayload!
+    saveStat(input: SaveStatInput!): Stat!
   }
 `;
 
