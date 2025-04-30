@@ -9,7 +9,6 @@ export interface IUser {
   vocabProgress: { vocabId: Schema.Types.ObjectId; correct: number; incorrect: number }[];
 }
 
-// User Schema
 const userSchema = new Schema<IUser>({
   username: {
     type: String,
@@ -33,22 +32,6 @@ const userSchema = new Schema<IUser>({
     enum: ['Beginner', 'Intermediate', 'Advanced'],
     required: true,
   },
-  vocabProgress: [
-    {
-      vocabId: {
-        type: Schema.Types.ObjectId,
-        ref: 'VocabSet',
-      },
-      correct: {
-        type: Number,
-        default: 0,
-      },
-      incorrect: {
-        type: Number,
-        default: 0,
-      },
-    },
-  ],
 });
 
 // Hash user's password before saving

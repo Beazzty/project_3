@@ -1,25 +1,65 @@
 const typeDefs = `
-  type Tech {
-    _id: ID!
-    name: String!
+  enum Level {
+    Beginner
+    Intermediate
+    Advanced
   }
 
-  type Matchup {
-    _id: ID!
-    tech1: String!
-    tech2: String!
-    tech1_votes: Int
-    tech2_votes: Int
+  type Vocab {
+    id: ID!
+    word: String!
+    translation: String!
+    level: Level!
+  }
+
+  type User {
+    id: ID!
+    username: String
+    email: String
+    skillLevel: Level!
+    vocabProgress: [VocabProgess!]!
+  }
+
+  type Stat {
+    id: ID!
+    user: User!
+    vocab: Vocab!
+    correct: Boolean!
+    createdAt: String!
+  }
+
+  input AddUserInput {
+    username: String
+    email: String
+    password: String!
+    skillLevel: SkillLevel!
+  }
+
+  input LoginInput {
+    username: String
+    passsword: String!
+  }
+
+  input SaveStatInput {
+    vocabId: ID!
+    correct: Boolean!
+  }
+
+  type AuthPayload {
+    token: String!
+    user: User!
   }
 
   type Query {
-    tech: [Tech]
-    matchups(_id: String): [Matchup]
+    me: User
+    flashcardsByLevel(level: Level!): [Vocabs!]!
+    statsByUser(userId: ID!): [Stat!]!
   }
 
-  type Mutation {
-    createMatchup(tech1: String!, tech2: String!): Matchup
-    createVote(_id: String!, techNum: Int!): Matchup
+  type Mutations {
+    addUser(input: AddUserInput!): AuthPayload!
+    login(input: LoginInput!): AuthPayload!
+    saveStat(input: SaveStatInput!): Stat!
   }
 `;
 
