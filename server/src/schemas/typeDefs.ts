@@ -1,4 +1,6 @@
-const typeDefs = `
+import { gql } from 'apollo-server-express';
+
+const typeDefs = gql`
   enum Level {
     Beginner
     Intermediate
@@ -6,22 +8,28 @@ const typeDefs = `
   }
 
   type Vocab {
-    id: ID!
+    _id: ID!
     word: String!
     translation: String!
     level: Level!
   }
 
+  type VocabProgress {
+    vocabId: ID!
+    correct: Int
+    incorrect: Int
+  }
+
   type User {
-    id: ID!
-    username: String
-    email: String
+    _id: ID!
+    username: String!
+    email: String!
     skillLevel: Level!
-    vocabProgress: [VocabProgess!]!
+    vocabProgress: [VocabProgress!]!
   }
 
   type Stat {
-    id: ID!
+    _id: ID!
     user: User!
     vocab: Vocab!
     correct: Boolean!
@@ -29,15 +37,15 @@ const typeDefs = `
   }
 
   input AddUserInput {
-    username: String
-    email: String
+    username: String!
+    email: String!
     password: String!
-    skillLevel: SkillLevel!
+    skillLevel: Level!
   }
 
   input LoginInput {
-    username: String
-    passsword: String!
+    email: String!
+    password: String!
   }
 
   input SaveStatInput {
@@ -52,11 +60,11 @@ const typeDefs = `
 
   type Query {
     me: User
-    flashcardsByLevel(level: Level!): [Vocabs!]!
+    flashcardsByLevel(level: Level!): [Vocab!]!
     statsByUser(userId: ID!): [Stat!]!
   }
 
-  type Mutations {
+  type Mutation {
     addUser(input: AddUserInput!): AuthPayload!
     login(input: LoginInput!): AuthPayload!
     saveStat(input: SaveStatInput!): Stat!
