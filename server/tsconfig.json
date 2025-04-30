@@ -1,13 +1,12 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "../tsconfig.json", // Ensure this file exists or remove this line
   "compilerOptions": {
-    /* Modules */
-    "rootDir": "src" /* Specify the root folder within your source files. */,
-
-    /* Emit */
-    "outDir": "dist", /* Specify an output folder for all emitted files. */
-    "noEmitOnError": true /* Disable emitting files if any type checking errors are reported. */
+    "rootDir": "src", // Specify the root folder for source files
+    "outDir": "dist", // Specify the output folder for compiled files
+    "noEmitOnError": true, // Prevent emitting files if there are type errors
+    "strict": true, // Enable all strict type-checking options
+    "esModuleInterop": true, // Allow default imports from CommonJS modules
+    "skipLibCheck": true // Skip type checking of declaration files
   },
-  "include": ["src"],
-  "typeRoots": ["./node_modules/@types", "./src/types"]
+  "include": ["src"] // Include all files in the src folder
 }
