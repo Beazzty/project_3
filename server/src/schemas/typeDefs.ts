@@ -1,25 +1,31 @@
 const typeDefs = `
-  type Tech {
-    _id: ID!
-    name: String!
+  enum Level {
+    Beginner
+    Intermediate
+    Advanced
   }
 
-  type Matchup {
-    _id: ID!
-    tech1: String!
-    tech2: String!
-    tech1_votes: Int
-    tech2_votes: Int
+  type Vocab {
+    id: ID!
+    word: String!
+    translation: String!
+    level: Level!
   }
 
-  type Query {
-    tech: [Tech]
-    matchups(_id: String): [Matchup]
+  type User {
+    id: ID!
+    username: String
+    email: String
+    password: String!
+    skillLevel: Level
+    vocabProgress: [VocabProgess!]!
   }
 
-  type Mutation {
-    createMatchup(tech1: String!, tech2: String!): Matchup
-    createVote(_id: String!, techNum: Int!): Matchup
+  type Stat {
+    id: ID!
+    user: User! // 1
+    vocab: Vocab! // XYZ - 123
+    correct: Boolean! // incorect
   }
 `;
 

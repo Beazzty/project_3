@@ -33,22 +33,6 @@ const userSchema = new Schema<IUser>({
     enum: ['Beginner', 'Intermediate', 'Advanced'],
     required: true,
   },
-  vocabProgress: [
-    {
-      vocabId: {
-        type: Schema.Types.ObjectId,
-        ref: 'VocabSet',
-      },
-      correct: {
-        type: Number,
-        default: 0,
-      },
-      incorrect: {
-        type: Number,
-        default: 0,
-      },
-    },
-  ],
 });
 
 // Hash user's password before saving
