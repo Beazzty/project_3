@@ -1,4 +1,4 @@
-import typeDefs from './typeDefs.js';
-import resolvers from './resolvers.js';
+import typeDefs from './typeDefs.js'; // Add .js extension
+import resolvers from './resolvers.js'; // Add .js extension
 
 export { typeDefs, resolvers };

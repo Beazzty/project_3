@@ -1,12 +1,14 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, Document } from 'mongoose';
 import bcrypt from 'bcrypt';
 
-export interface IUser {
+export interface IUser extends Document {
+  _id: string; // Change ObjectId to string for compatibility with AuthPayload
   username: string;
   email: string;
   password: string;
   skillLevel: 'Beginner' | 'Intermediate' | 'Advanced';
   vocabProgress: { vocabId: Schema.Types.ObjectId; correct: number; incorrect: number }[];
+  isCorrectPassword(password: string): Promise<boolean>; // Add method signature
 }
 
 const userSchema = new Schema<IUser>({
