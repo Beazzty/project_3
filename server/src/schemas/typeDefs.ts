@@ -16,16 +16,38 @@ const typeDefs = `
     id: ID!
     username: String
     email: String
-    password: String!
-    skillLevel: Level
+    skillLevel: Level!
     vocabProgress: [VocabProgess!]!
   }
 
   type Stat {
     id: ID!
-    user: User! // 1
-    vocab: Vocab! // XYZ - 123
-    correct: Boolean! // incorect
+    user: User!
+    vocab: Vocab!
+    correct: Boolean!
+    createdAt: String!
+  }
+
+  input AddUserInput {
+    username: String
+    email: String
+    password: String!
+    skillLevel: SkillLevel!
+  }
+
+  type AuthPayload {
+    token: String!
+    user: User!
+  }
+
+  type Query {
+    me: User
+    flashcardsByLevel(level: Level!): [Vocabs!]!
+    statsByUser(userId: ID!): [Stat!]!
+  }
+
+  type Mutations {
+    addUser(input: AddUserInput!): AuthPayload!
   }
 `;
 

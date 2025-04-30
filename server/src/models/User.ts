@@ -9,7 +9,6 @@ export interface IUser {
   vocabProgress: { vocabId: Schema.Types.ObjectId; correct: number; incorrect: number }[];
 }
 
-// User Schema
 const userSchema = new Schema<IUser>({
   username: {
     type: String,
