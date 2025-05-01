@@ -1,32 +1,28 @@
 import { gql } from 'apollo-server-express';
 
 const typeDefs = gql`
-  type User {
-    _id: ID
-    username: String
-    email: String
-  }
+enum SkillLevel {
+Beginner
+Intermediate
+Advanced
+}
+// Main object types
 
-  type Auth {
-    token: String
-    user: User
-  }
 
-  input UserInput {
-    username: String
-    email: String
-    password: String
-    skillLevel: String
-  }
 
-  type Query {
-    me: User
-  }
+type User {
+_id: ID!
+username: String!
+email: String!
+password: String!
+skillLevel: SkillLevel!
+}
 
-  type Mutation {
-    addUser(input: UserInput): Auth
-    login(input: UserInput): Auth
-  }
-`;
+type Vocab {
+_id: ID!
+english: String!
+spanish: String!
+incorrect: Int!
+createdAt: String!
 
-export default typeDefs;
+}
