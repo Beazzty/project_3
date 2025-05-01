@@ -26,3 +26,17 @@ incorrect: Int!
 createdAt: String!
 
 }
+
+input UserInput {
+username: String!
+email: String!
+password: String!
+skillLevel: SkillLevel!
+}
+
+input ResultInput {
+id: ID!
+userId: ID!
+numQuestions: int!
+skillLevel: SkillLevel!
+}
