@@ -1,10 +1,18 @@
 import { gql } from 'apollo-server-express';
 
 const typeDefs = gql`
+  type VocabProgress {
+    vocabId: ID
+    correct: Int
+    incorrect: Int
+  }
+
   type User {
     _id: ID
     username: String
     email: String
+    skillLevel: String
+    vocabProgress: [VocabProgress]
   }
 
   type Auth {
