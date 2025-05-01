@@ -14,6 +14,15 @@ const resolvers = {
   },
   Mutation: {
     addUser: async (_parent: unknown, { input }: { input: IUser }) => {
+      const existingUser = await User.findOne({ email: input.email });
+      if (existingUser) {
+        throw new AuthenticationError('User already exists with this email');
+      }
+      if (input.skillLevel !== 'Beginner'
+         && input.skillLevel !== 'Intermediate'
+         && input.skillLevel !== 'Advanced') {
+        throw new AuthenticationError('Invalid skill level. Must be Beginner, Intermediate, or Advanced');
+      }
       const user = await User.create(input);
       const token = signToken(user.toObject()); // Convert Mongoose document to plain object
       return { token, user };
