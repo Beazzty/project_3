@@ -7,33 +7,51 @@ const typeDefs = gql`
     incorrect: Int
   }
 
+  enum SkillLevel {
+    Beginner
+    Intermediate
+    Advanced
+  }
+
+  type Vocab {
+    _id: ID!
+    english: String!
+    spanish: String!
+    incorrect: Int!
+    createdAt: String!
+  }
+
   type User {
-    _id: ID
-    username: String
-    email: String
-    skillLevel: String
+    _id: ID!
+    username: String!
+    email: String!
+    password: String
+    skillLevel: SkillLevel!
     vocabProgress: [VocabProgress]
   }
 
-  type Auth {
-    token: String
-    user: User
+  input UserInput {
+    username: String!
+    email: String!
+    password: String!
+    skillLevel: SkillLevel!
   }
 
-  input UserInput {
-    username: String
-    email: String
-    password: String
-    skillLevel: String
+  input ResultInput {
+    numQuestions: Int!
+    numCorrect: Int!
+    skillLevel: SkillLevel!
   }
 
   type Query {
     me: User
+    quiz(skillLevel: SkillLevel!): [Vocab!]!
   }
 
   type Mutation {
-    addUser(input: UserInput): Auth
-    login(input: UserInput): Auth
+    addUser(input: UserInput!): User!
+    addResult(input: ResultInput!): User!
+    removeResult(resultId: ID!): User!
   }
 `;
 
