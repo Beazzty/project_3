@@ -1,0 +1,102 @@
+[
+    {
+        "word": " Ella",
+        "translation": "She",
+        "level": "Beginer"
+    },
+    {
+        "word": " Él",
+        "translation": "He",
+        "level": "Beginer"
+    },
+    {
+        "word": " Nosotros",
+        "translation": "We",
+        "level": "Beginer"
+    },
+    {
+        "word": " Ellos",
+        "translation": "They (masculine)",
+        "level": "Beginer"
+    },
+    {
+        "word": " Ellas",
+        "translation": "They (feminine)",
+        "level": "Beginer"
+    },
+    {
+        "word": " Tú",
+        "translation": "You (informal singular)",
+        "level": "Beginer"
+    },
+    {
+        "word": " Usted",
+        "translation": "You (formal singular)",
+        "level": "Beginer"
+    },
+    {
+        "word": " Vosotros",
+        "translation": "You all (informal plural, masculine)",
+        "level": "Beginer"
+    },
+    {
+        "word": " Vosotras",
+        "translation": "You all (informal plural, feminine)",
+        "level": "Beginer"
+    },
+    {
+        "word": " Ustedes",
+        "translation": "You all (formal plural)",
+        "level": "Beginer"
+    },
+    {
+        "word": "Me gusta aprender nuevos idiomas.",
+        "translation": "I like learning new languages.",
+        "level": "Intermediate"
+    },
+    {
+        "word": "¿Dónde está la estación de tren?",
+        "translation": "Where is the train station?",
+        "level": "Intermediate"
+    },
+    {
+        "word": "Ella trabaja en una oficina en el centro.",
+        "translation": "She works in an office downtown.",
+        "level": "Intermediate"
+    },
+    {
+        "word": "Vamos al cine esta noche.",
+        "translation": "We're going to the movies tonight.",
+        "level": "Intermediate"
+    },
+    {
+        "word": "Hace mucho calor hoy.",
+        "translation": "Its very hot today.",
+        "level": "Intermediate"
+    },
+    {
+        "word": "Aunque estaba cansado, decidió seguir trabajando hasta terminar el proyecto.",
+        "translation": "Although he was tired, he decided to keep working until he finished the project.",
+        "level": "Advanced"
+    },
+    {
+        "word": "Si hubiera sabido que venías, habría preparado algo especial para ti.",
+        "translation": "If I had known you were coming, I would have prepared something special for you.",
+        "level": "Advanced"
+    },
+    {
+        "word": "A pesar de las dificultades, lograron completar la expedición con éxito.",
+        "translation": "Despite the difficulties, they managed to complete the expedition successfully.",
+        "level": "Advanced"
+    },
+    {
+        "word": "No creo que él haya entendido lo que realmente quisiste decir.",
+        "translation": "I don't think he understood what you really meant.",
+        "level": "Advanced"
+    },
+    {
+        "word": "Cuando termine de leer el libro, te lo prestaré para que también lo disfrutes.",
+        "translation": "When I finish reading the book, Ill lend it to you so you can enjoy it too.",
+        "level": "Advanced"
+    }
+]
