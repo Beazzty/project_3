@@ -7,7 +7,6 @@ const resolvers = {
   Query: {
     me: async (_parent: unknown, _args: unknown, context: { user: IUser }) => {
       if (context.user) {
-        // Populate vocabProgress to include vocabId details if needed
         return await User.findById(context.user._id).populate('vocabProgress.vocabId');
       }
       throw new AuthenticationError('You must be logged in');

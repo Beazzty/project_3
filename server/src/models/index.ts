@@ -1,4 +1,2 @@
-import User from './User.js'; // Add .js extension
-import VocabSet from './VocabSet.js'; // Add .js extension
-
-export default { User, VocabSet };
+export { default as User } from './User.js';
+export { default as VocabSet } from './VocabSet.js';
