@@ -56,10 +56,11 @@ const typeDefs = `
     statsByUser(userId: ID!): [Stat!]!
   }
 
-  type Mutations {
+  type Mutation {
     addUser(input: AddUserInput!): AuthPayload!
     login(input: LoginInput!): AuthPayload!
     saveStat(input: SaveStatInput!): Stat!
+    removeResult(resultId: ID!): Boolean!
   }
 `;
 
