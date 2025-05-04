@@ -49,9 +49,12 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(input: UserInput!): User!
-    addResult(input: ResultInput!): User!
-    removeResult(resultId: ID!): User!
+
+    addUser(input: AddUserInput!): AuthPayload!
+    login(input: LoginInput!): AuthPayload!
+    saveStat(input: SaveStatInput!): Stat!
+    removeResult(resultId: ID!): Boolean!
+
   }
 `;
 

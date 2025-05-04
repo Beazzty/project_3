@@ -37,6 +37,6 @@
       "src"
     ],
     "ext": "ts,js,json",
-    "exec": "npx tsc && node dist/server.js"
+    "exec": "tsc && node dist/server.js"
   }
 }

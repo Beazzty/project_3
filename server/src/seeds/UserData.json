@@ -1,0 +1,20 @@
+[
+    {
+        "username": "admin",
+        "email": "stan@example.com",
+        "password": "happyfeet",
+        "skilllevel": "Beginner"
+    },
+    {
+        "username": "name",
+        "email": "molly@example.com",
+        "password": "happyfeet",
+        "skilllevel": "Intermediate"
+    },
+    {
+        "username": "user1",
+        "email": "zach@example.com",
+        "password": "happyfeet",
+        "skilllevel": "Advanced"
+    }
+]

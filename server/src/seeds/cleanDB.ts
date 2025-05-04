@@ -1,16 +1,17 @@
-// import models from '../models/index.js';
-// import db from '../config/connection.js';
+import db from '../config/connection.js';
 
-// export default async (modelName: "Tech" | "Matchup", collectionName: string) => {
-//   // try {
-//   //   let modelExists = await models[modelName]?.db?.db?.listCollections({
-//   //     name: collectionName
-//   //   })?.toArray() || [];
+export default async () => {
+  try {
+     // Get all collections
+     const collections = await db.listCollections();
 
-//   //   if (modelExists.length) {
-//   //     await db.dropCollection(collectionName);
-//   //   }
-//   // } catch (err) {
-//   //   throw err;
-//   // }
-// }
+     // Create an array of collection names and drop each collection
+     collections
+       .map((collection) => collection.name)
+       .forEach(async (collectionName) => {
+         db.dropCollection(collectionName);
+       });
+  } catch (err) {
+    throw err;
+  }
+ }
