@@ -1,9 +1,9 @@
 import { Schema, model } from 'mongoose';
 
 export interface IVocabSet {
-  word: string;
-  translation: string;
-  level: 'Beginner' | 'Intermediate' | 'Advanced';
+word: string;
+translation: string;
+level: 'Beginner' | 'Intermediate' | 'Advanced';
 }
 
 const vocabSetSchema = new Schema<IVocabSet>({
