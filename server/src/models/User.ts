@@ -6,7 +6,7 @@ export interface IUser extends Document {
   username: string;
   email: string;
   password: string;
-  skillLevel: 'Beginner' | 'Intermediate' | 'Advanced';
+  skillLevel: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED';
   vocabProgress: { vocabId: Schema.Types.ObjectId; correct: number; incorrect: number }[];
   isCorrectPassword(password: string): Promise<boolean>; // Add method signature
 }
@@ -31,7 +31,7 @@ const userSchema = new Schema<IUser>({
   },
   skillLevel: {
     type: String,
-    enum: ['Beginner', 'Intermediate', 'Advanced'],
+    enum: ['BEGINNER', 'INTERMEDIATE', 'ADVANCED'],
     required: true,
   },
   vocabProgress: [
