@@ -1,9 +1,8 @@
 import { Schema, model, Document, Types } from 'mongoose';
 export interface IResult extends Document {
   userId: Types.ObjectId;
-  numQuestions: number;
-  numCorrect: number;
-  skillLevel: 'Beginner' | 'Intermediate' | 'Advanced';
+  vocabId: Types.ObjectId;
+  correct: Boolean;
   createdAt: Date;
 }
 const resultSchema = new Schema<IResult>(
@@ -13,17 +12,13 @@ const resultSchema = new Schema<IResult>(
       ref: 'User',
       required: true,
     },
-    numQuestions: {
-      type: Number,
+    vocabId: {
+      type: Schema.Types.ObjectId,
+      ref: 'VocabSet',
       required: true,
     },
-    numCorrect: {
-      type: Number,
-      required: true,
-    },
-    skillLevel: {
-      type: String,
-      enum: ['Beginner', 'Intermediate', 'Advanced'],
+    correct: {
+      type: Boolean,
       required: true,
     },
     createdAt: {
