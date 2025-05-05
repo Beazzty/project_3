@@ -2,101 +2,101 @@
     {
         "word": " Ella",
         "translation": "She",
-        "level": "Beginer"
+        "level": "BEGINNER"
     },
     {
         "word": " Él",
         "translation": "He",
-        "level": "Beginer"
+        "level": "BEGINNER"
     },
     {
         "word": " Nosotros",
         "translation": "We",
-        "level": "Beginer"
+        "level": "BEGINNER"
     },
     {
         "word": " Ellos",
         "translation": "They (masculine)",
-        "level": "Beginer"
+        "level": "BEGINNER"
     },
     {
         "word": " Ellas",
         "translation": "They (feminine)",
-        "level": "Beginer"
+        "level": "BEGINNER"
     },
     {
         "word": " Tú",
         "translation": "You (informal singular)",
-        "level": "Beginer"
+        "level": "BEGINNER"
     },
     {
         "word": " Usted",
         "translation": "You (formal singular)",
-        "level": "Beginer"
+        "level": "BEGINNER"
     },
     {
         "word": " Vosotros",
         "translation": "You all (informal plural, masculine)",
-        "level": "Beginer"
+        "level": "BEGINNER"
     },
     {
         "word": " Vosotras",
         "translation": "You all (informal plural, feminine)",
-        "level": "Beginer"
+        "level": "BEGINNER"
     },
     {
         "word": " Ustedes",
         "translation": "You all (formal plural)",
-        "level": "Beginer"
+        "level": "BEGINNER"
     },
     {
         "word": "Me gusta aprender nuevos idiomas.",
         "translation": "I like learning new languages.",
-        "level": "Intermediate"
+        "level": "INTERMEDIATE"
     },
     {
         "word": "¿Dónde está la estación de tren?",
         "translation": "Where is the train station?",
-        "level": "Intermediate"
+        "level": "INTERMEDIATE"
     },
     {
         "word": "Ella trabaja en una oficina en el centro.",
         "translation": "She works in an office downtown.",
-        "level": "Intermediate"
+        "level": "INTERMEDIATE"
     },
     {
         "word": "Vamos al cine esta noche.",
         "translation": "We're going to the movies tonight.",
-        "level": "Intermediate"
+        "level": "INTERMEDIATE"
     },
     {
         "word": "Hace mucho calor hoy.",
         "translation": "Its very hot today.",
-        "level": "Intermediate"
+        "level": "INTERMEDIATE"
     },
     {
         "word": "Aunque estaba cansado, decidió seguir trabajando hasta terminar el proyecto.",
         "translation": "Although he was tired, he decided to keep working until he finished the project.",
-        "level": "Advanced"
+        "level": "ADVANCED"
     },
     {
         "word": "Si hubiera sabido que venías, habría preparado algo especial para ti.",
         "translation": "If I had known you were coming, I would have prepared something special for you.",
-        "level": "Advanced"
+        "level": "ADVANCED"
     },
     {
         "word": "A pesar de las dificultades, lograron completar la expedición con éxito.",
         "translation": "Despite the difficulties, they managed to complete the expedition successfully.",
-        "level": "Advanced"
+        "level": "ADVANCED"
     },
     {
         "word": "No creo que él haya entendido lo que realmente quisiste decir.",
         "translation": "I don't think he understood what you really meant.",
-        "level": "Advanced"
+        "level": "ADVANCED"
     },
     {
         "word": "Cuando termine de leer el libro, te lo prestaré para que también lo disfrutes.",
         "translation": "When I finish reading the book, Ill lend it to you so you can enjoy it too.",
-        "level": "Advanced"
+        "level": "ADVANCED"
     }
 ]
