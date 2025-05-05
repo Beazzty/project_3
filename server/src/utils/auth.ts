@@ -26,9 +26,10 @@ export function authMiddleware({ req }: { req: Request & { user?: AuthPayload } 
   }
 
   try {
-    const { data } = jwt.verify(token, secret) as { data: AuthPayload };
-    req.user = data;
+    const decoded = jwt.verify(token, secret) as AuthPayload;
+    req.user = decoded;
   } catch {
+    console.log(req.headers.authorization)
     console.log('Invalid token');
   }
 
@@ -38,5 +39,5 @@ export function authMiddleware({ req }: { req: Request & { user?: AuthPayload } 
 // Function to sign token during login/signup
 export function signToken({ _id, username, email }: AuthPayload) {
   const payload = { _id, username, email };
-  return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+  return jwt.sign(payload, secret, { expiresIn: expiration });
 }
