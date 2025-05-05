@@ -1,60 +1,67 @@
 import { gql } from 'apollo-server-express';
 
-const typeDefs = gql`
-  type VocabProgress {
-    vocabId: ID
-    correct: Int
-    incorrect: Int
-  }
-
-  enum SkillLevel {
-    Beginner
-    Intermediate
-    Advanced
-  }
-
-  type Vocab {
-    _id: ID!
-    english: String!
-    spanish: String!
-    incorrect: Int!
-    createdAt: String!
+export const typeDefs = gql`
+  enum Level {
+    BEGINNER
+    INTERMEDIATE
+    ADVANCED
   }
 
   type User {
     _id: ID!
     username: String!
     email: String!
-    password: String
-    skillLevel: SkillLevel!
-    vocabProgress: [VocabProgress]
+    skillLevel: Level!
   }
 
-  input UserInput {
+  type Vocab {
+    _id: ID!
+    word: String!
+    translation: String!
+    level: Level!
+    options: [String!]!
+  }
+
+  type Stat {
+    _id: ID!
+    userId: ID!
+    vocabId: ID!
+    correct: Boolean!
+    level: Level
+  }
+
+  type AuthPayload {
+    token: String!
+    user: User!
+  }
+
+  input AddUserInput {
     username: String!
     email: String!
     password: String!
-    skillLevel: SkillLevel!
+    skillLevel: Level!
   }
 
-  input ResultInput {
-    numQuestions: Int!
-    numCorrect: Int!
-    skillLevel: SkillLevel!
+  input LoginInput {
+    email: String!
+    password: String!
+  }
+
+  input SaveStatInput {
+    vocabId: ID!
+    correct: Boolean!
   }
 
   type Query {
     me: User
-    quiz(skillLevel: SkillLevel!): [Vocab!]!
+    flashcardsByLevel(level: Level!): [Vocab]!
+    getStats: [Stat]!
   }
 
   type Mutation {
-
     addUser(input: AddUserInput!): AuthPayload!
     login(input: LoginInput!): AuthPayload!
     saveStat(input: SaveStatInput!): Stat!
-    removeResult(resultId: ID!): Boolean!
-
   }
 `;
 

@@ -1,62 +1,106 @@
-import User from '../models/User.js';
-import { AuthenticationError } from 'apollo-server-express';
-import { signToken } from '../utils/auth.js';
-import { IUser } from '../models/User';
+import { UserInputError, AuthenticationError } from 'apollo-server-express';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
+
+import { User, VocabSet, Result } from '../models/index.js';
+
+const SECRET = process.env.JWT_SECRET || 'mysecretkey';
+
+interface GraphQLContext {
+  user: { _id: string } | null;
+}
+
+function shuffleArray<T>(array: T[]): T[] {
+  return array.sort(() => Math.random() - 0.5);
+}
 
 const resolvers = {
   Query: {
-    me: async (_parent: unknown, _args: unknown, context: { user: IUser }) => {
-      if (context.user) {
-        return await User.findById(context.user._id).populate('vocabProgress.vocabId');
-      }
-      throw new AuthenticationError('You must be logged in');
+    me: async (_parent: unknown, _args: unknown, context: GraphQLContext) => {
+      if (!context.user) throw new AuthenticationError('Not authenticated');
+      return await User.findById(context.user._id);
     },
+    flashcardsByLevel: async (
+      _parent: unknown,
+      { level }: { level: string }
+    ) => {
+      const allVocabs = await VocabSet.find();
+      const levelVocabs = await VocabSet.find({ level });
+
+      return levelVocabs.map((vocab) => {
+        const incorrects = shuffleArray(
+          allVocabs.filter(v => v._id.toString() !== vocab._id.toString())
+        ).slice(0, 3).map(v => v.translation);
+
+        const options = shuffleArray([vocab.translation, ...incorrects]);
+
+        return {
+          ...vocab.toObject(),
+          options,
+        };
+      });
+    },
+    getStats: async (_parent: unknown, _args: unknown, context: GraphQLContext) => {
+      if (!context.user) throw new AuthenticationError('Not authenticated');
+      const stats = await Result.find({ userId: context.user._id });
+    
+      const enrichedStats = await Promise.all(stats.map(async stat => {
+        const vocab = await VocabSet.findById(stat.vocabId);
+        return {
+          ...stat.toObject(),
+          level: vocab?.level || 'BEGINNER',
+        };
+      }));
+    
+      return enrichedStats;
+    }
   },
   Mutation: {
-    addUser: async (_parent: unknown, { input }: { input: Partial<IUser> }) => {
-      const { email, skillLevel, vocabProgress, ...rest } = input;
-
-      // Check if the user already exists
-      const existingUser = await User.findOne({ email });
-      if (existingUser) {
-        throw new AuthenticationError('User already exists with this email');
-      }
-
-      // Validate skillLevel
-      if (skillLevel !== 'Beginner' && skillLevel !== 'Intermediate' && skillLevel !== 'Advanced') {
-        throw new AuthenticationError('Invalid skill level. Must be Beginner, Intermediate, or Advanced');
-      }
-
-      // Create the user
-      const user = await User.create({
-        ...rest,
-        email,
-        skillLevel,
-        vocabProgress: vocabProgress || [], // Default to an empty array if not provided
-      });
-
-      // Generate a token
-      const token = signToken(user.toObject()); // Convert Mongoose document to plain object
-
+    addUser: async (
+      _parent: unknown,
+      { input }: { input: { username: string; email: string; password: string; skillLevel: string } }
+    ) => {
+      const { username, email, password, skillLevel } = input;
+      if (!username || !email || !password)
+        throw new UserInputError('All fields required');
+      const existing = await User.findOne({ email });
+      if (existing) throw new UserInputError('Email already in use');
+      const hashed = await bcrypt.hash(password, 10);
+      const user = await User.create({ username, email, password: hashed, skillLevel });
+      const token = jwt.sign({ _id: user._id }, SECRET);
       return { token, user };
     },
     login: async (
       _parent: unknown,
-      { input: { email, password } }: { input: { email: string; password: string } }
+      { input }: { input: { email: string; password: string } }
     ) => {
+      const { email, password } = input;
       const user = await User.findOne({ email });
-      if (!user) {
-        throw new AuthenticationError('No user found with this email');
-      }
-
-      const isPwCorrect = await user.isCorrectPassword(password);
-      if (!isPwCorrect) {
-        throw new AuthenticationError('Incorrect credentials');
-      }
-
-      const token = signToken(user.toObject()); // Convert Mongoose document to plain object
+      if (!user) throw new AuthenticationError('Invalid credentials');
+      const match = await bcrypt.compare(password, user.password);
+      if (!match) throw new AuthenticationError('Invalid credentials');
+      const token = jwt.sign({ _id: user._id }, SECRET);
       return { token, user };
     },
+    saveStat: async (
+      _parent: unknown,
+      { input }: { input: { vocabId: string; correct: boolean } },
+      context: GraphQLContext
+    ) => {
+      if (!context.user) throw new AuthenticationError('Login required');
+    
+      const { vocabId, correct } = input;
+      const user = await User.findById(context.user._id);
+      if (!user) throw new AuthenticationError('User not found');
+    
+      const stat = await Result.create({
+        userId: user._id,
+        vocabId,
+        correct,
+      });
+    
+      return stat;
+    }
   },
 };
 

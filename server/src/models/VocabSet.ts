@@ -3,7 +3,7 @@ import { Schema, model } from 'mongoose';
 export interface IVocabSet {
 word: string;
 translation: string;
-level: 'Beginner' | 'Intermediate' | 'Advanced';
+level: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED';
 }
 
 const vocabSetSchema = new Schema<IVocabSet>({
@@ -19,7 +19,7 @@ const vocabSetSchema = new Schema<IVocabSet>({
   },
   level: {
     type: String,
-    enum: ['Beginner', 'Intermediate', 'Advanced'],
+    enum: ['BEGINNER', 'INTERMEDIATE', 'ADVANCED'],
     required: true,
   },
 });
