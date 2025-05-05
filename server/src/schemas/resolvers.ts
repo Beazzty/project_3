@@ -65,8 +65,7 @@ const resolvers = {
         throw new UserInputError('All fields required');
       const existing = await User.findOne({ email });
       if (existing) throw new UserInputError('Email already in use');
-      const hashed = await bcrypt.hash(password, 10);
-      const user = await User.create({ username, email, password: hashed, skillLevel });
+      const user = await User.create({ username, email, password, skillLevel });
       const token = jwt.sign({ _id: user._id }, SECRET);
       return { token, user };
     },
@@ -76,8 +75,11 @@ const resolvers = {
     ) => {
       const { email, password } = input;
       const user = await User.findOne({ email });
+
       if (!user) throw new AuthenticationError('Invalid credentials');
+      console.log(user, password)
       const match = await bcrypt.compare(password, user.password);
+      console.log(match)
       if (!match) throw new AuthenticationError('Invalid credentials');
       const token = jwt.sign({ _id: user._id }, SECRET);
       return { token, user };
