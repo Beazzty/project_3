@@ -4,7 +4,7 @@ import { GET_QUIZ }   from '../utils/queries';
 
 export default function Advanced() {
   const { loading, error, data } = useQuery(GET_QUIZ, {
-    variables: { level: 'Advanced' }
+    variables: { level: 'ADVANCED' }
   });
   if (loading) return <p>Loading…</p>;
   if (error)   return <p>Error!</p>;
@@ -12,7 +12,7 @@ export default function Advanced() {
   return (
     <div>
       <h1>Advanced Quiz</h1>
-      {data.quiz.map((q:any) => (
+      {data.flashcardsByLevel.map((q:any) => (
         <div key={q._id}>
           <p>{q.word}</p>
           {q.options.map((opt:string,i:number) =>

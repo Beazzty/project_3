@@ -14,6 +14,7 @@ export default function SignUp() {
     setForm({ ...form, [e.target.name]: e.target.value });
   const onSubmit = async (e:any) => {
     e.preventDefault();
+    form.skillLevel = form.skillLevel.toUpperCase();
     const { data } = await addUser({ variables: { input: form } });
     if (data?.addUser.token) nav('/select');
   };
