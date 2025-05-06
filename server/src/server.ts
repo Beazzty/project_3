@@ -2,6 +2,7 @@ import express from 'express';
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import cors from 'cors';
+import path from 'path'; // Add this import
 
 import db from './config/connection.js';
 import { authMiddleware } from './utils/auth.js';
@@ -35,10 +36,10 @@ async function startApolloServer() {
 
   // If we're in production, serve client/dist as static assets
   if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('../client/dist'));
+    app.use(express.static(path.resolve(__dirname, '../../client/dist')));
 
     app.get('*', (_req, res) => {
-      res.sendFile('../client/dist/index.html');
+      res.sendFile(path.resolve(__dirname, '../../client/dist/index.html')); // Use absolute path
     });
   }
 
