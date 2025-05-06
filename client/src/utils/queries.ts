@@ -10,6 +10,7 @@ export const GET_QUIZ = gql`
   query Quiz($level: Level!) {
      flashcardsByLevel(level: $level) {
       _id
+      translation
       word
       options
     }

@@ -17,7 +17,7 @@ const Auth = {
 };
 
 export default function Login() {
-  const [form, setForm] = useState({ username: '', password: '' });
+  const [form, setForm] = useState({ email: '', password: '' });
   const [login] = useMutation(LOGIN);
   const nav = useNavigate();
 
@@ -27,7 +27,7 @@ export default function Login() {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const { data } = await login({ variables: { input: { ...form, email: '' } } });
+      const { data } = await login({ variables: { input: { email: form.email, password: form.password } } });
       if (data?.login.token) {
         Auth.login(data.login.token);
         nav('/select');
@@ -42,9 +42,9 @@ export default function Login() {
     <form onSubmit={onSubmit} className={styles.form}>
       <h1>Log In</h1>
       <input
-        name="username"
-        placeholder="Username"
-        value={form.username}
+        name="email"
+        placeholder="Email"
+        value={form.email}
         onChange={onChange}
         required
       />
