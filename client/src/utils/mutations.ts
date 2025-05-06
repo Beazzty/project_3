@@ -1,30 +1,25 @@
 import { gql } from '@apollo/client';
 
-export const LOGIN_USER = gql`
-  mutation loginUser($input: LoginInput!) {
-    login(input: $input) {
-      token
-      user {
-        id
-      }
-    }
-  }
-`;
-
 export const ADD_USER = gql`
   mutation addUser($input: AddUserInput!) {
     addUser(input: $input) {
       token
-      user { 
-      id
-      }
-}
+      user { _id username }
+    }
   }
 `;
 
-export const REMOVE_RESULT = gql`
-mutation removeResult($resultId: ID!) {
-  removeResult(resultId: $resultId)
+export const LOGIN = gql`
+  mutation login($input: UserInput!) {
+    login(input: $input) {
+      token
+      user { _id username }
+    }
+  }
+`;
 
+export const SAVE_STAT = gql`
+  mutation addResult($input: ResultInput!) {
+    addResult(input: $input) { _id }
   }
 `;
