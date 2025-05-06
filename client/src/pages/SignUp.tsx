@@ -21,6 +21,7 @@ export default function SignUp() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    form.skillLevel = form.skillLevel.toUpperCase();
     try {
       const { data } = await addUser({ variables: { input: form } });
       if (data?.addUser.token) {

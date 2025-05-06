@@ -7,8 +7,8 @@ export const GET_ME = gql`
 `;
 
 export const GET_QUIZ = gql`
-  query Quiz($level: SkillLevel!) {
-    quiz(skillLevel: $level) {
+  query Quiz($level: Level!) {
+     flashcardsByLevel(level: $level) {
       _id
       word
       options
