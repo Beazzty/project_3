@@ -1,22 +1,29 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_TECH = gql`
-  query tech {
-    tech {
+export const GET_ME = gql`
+  query Me {
+    me { _id username email skillLevel }
+  }
+`;
+
+export const GET_QUIZ = gql`
+  query Quiz($level: SkillLevel!) {
+    quiz(skillLevel: $level) {
       _id
-      name
+      word
+      options
     }
   }
 `;
 
-export const QUERY_MATCHUPS = gql`
-  query matchups($_id: String) {
-    matchups(_id: $_id) {
+export const GET_STATS = gql`
+  query Stats($userId: ID!) {
+    statsByUser(userId: $userId) {
       _id
-      tech1
-      tech2
-      tech1_votes
-      tech2_votes
+      numQuestions
+      numCorrect
+      skillLevel
+      createdAt
     }
   }
 `;

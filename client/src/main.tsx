@@ -1,37 +1,35 @@
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import App from './App';
-import Home from './pages/Home';
-import Matchup from './pages/Matchup';
-import Vote from './pages/Vote';
-import NotFound from './pages/NotFound';
+import App         from './App';
+import Welcome     from './pages/Welcome';
+import SignUp      from './pages/SignUp';
+import Login       from './pages/Login';
+import SkillSelect from './pages/SkillSelect';
+import Beginner    from './pages/Beginner';
+import Intermediate from './pages/Intermediate';
+import Advanced    from './pages/Advanced';
+import Stats       from './pages/Stats';
+import NotFound    from './pages/NotFound';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <NotFound />,
+    errorElement: <NotFound/>,
     children: [
-      {
-        index: true,
-        element: <Home />
-      }, {
-        path: '/matchup',
-        element: <Matchup />
-      }, {
-        path: '/matchup/:id',
-        element: <Vote />
-      },
-    ],
-  },
+      { index: true,          element: <Welcome/>    },
+      { path: 'signup',       element: <SignUp/>     },
+      { path: 'login',        element: <Login/>      },
+      { path: 'select',       element: <SkillSelect/>},
+      { path: 'beginner',     element: <Beginner/>   },
+      { path: 'intermediate', element: <Intermediate/> },
+      { path: 'advanced',     element: <Advanced/>   },
+      { path: 'stats',        element: <Stats/>      },
+    ]
+  }
 ]);
 
-const rootElement = document.getElementById('root');
-
-if(rootElement) {
-  ReactDOM.createRoot(rootElement).render(
-    <RouterProvider router={router} />
-  );
-}
-
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <RouterProvider router={router}/>
+);

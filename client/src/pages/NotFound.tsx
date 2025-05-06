@@ -1,16 +1,11 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
-function NotFound() {
-  let location = useLocation();
+export default function NotFound() {
+  let loc = useLocation();
   return (
-    <div className="card bg-white card-rounded w-50">
-      <div className="card-header bg-dark text-center">
-        <h1>
-          No match for <code>{location.pathname}</code>
-        </h1>
-      </div>
+    <div>
+      <h1>404: No page at “{loc.pathname}”</h1>
+      <Link to="/"><button>Go Home</button></Link>
     </div>
   );
 }
-
-export default NotFound;
