@@ -1,19 +1,19 @@
-# VivaLinga
+# VivaVocab
 
-**VivaLinga** is a MERN stack single-page application designed to help users learn and practice Spanish vocabulary through progressive difficulty levels. Users can create an account, take vocabulary quizzes, and track their progress through beginner, intermediate, and advanced stages.
+**VivaVocab** is a MERN stack single-page application designed to help users learn and practice Spanish vocabulary through progressive difficulty levels. Users can create an account, take vocabulary quizzes, and track their progress through beginner, intermediate, and advanced stages.
 
 ---
 
 ## 🚀 Live Demo
 
-🌐 [Deployed App on Render](https://project-3-k2nt.onrender.com)  
+🌐 [Deployed App on Render](https://vivavocab.onrender.com)  
 📂 [GitHub Repository](https://github.com/Beazzty/project_3)
 
 ---
 
 ## 🧠 Motivation
 
-Learning a new language can be difficult without structure and progression. VivaLinga offers a gamified experience to help users build and test their vocabulary knowledge at increasing levels of difficulty — all within a responsive and engaging user interface.
+Learning a new language can be difficult without structure and progression. VivaVocab offers a gamified experience to help users build and test their vocabulary knowledge at increasing levels of difficulty — all within a responsive and engaging user interface.
 
 ---
 
