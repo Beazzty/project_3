@@ -30,7 +30,7 @@ Learning a new language can be difficult without structure and progression. Viva
 
 ## 📷 Screenshots
 
-> *(Insert screenshots of your homepage, quiz interface, and game over screen here)*
+> *(Insert screenshots)*
 
 ---
 
@@ -88,11 +88,11 @@ JWT_SECRET_KEY=your-jwt-secret
 
 ## 👥 Team
 
-- Iliana Pena  
+- Iliana Peña  
+- Isse Farah
 - Quinn Brown  
-- Byron Tobe  
-- Isse Farah  
-- Obi
+- Byron Tobe
+- Obi Mazagri
 
 ---
 
