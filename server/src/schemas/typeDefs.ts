@@ -28,6 +28,7 @@ export const typeDefs = gql`
     vocabId: ID!
     correct: Boolean!
     level: Level
+    createdAt: String!
   }
 
   type AuthPayload {
