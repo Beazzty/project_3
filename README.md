@@ -30,7 +30,7 @@ Learning a new language can be difficult without structure and progression. Viva
 
 ## 📷 Screenshots
 
-> *(Insert screenshots)*
+>![App Screenshot](./assets/Screenshot%202025-05-07%20160012.png)
 
 ---
 
