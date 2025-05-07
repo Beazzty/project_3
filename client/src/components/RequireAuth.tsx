@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
 export const RequireAuth: FC<{ children: JSX.Element }> = ({ children }) => {
