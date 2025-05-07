@@ -28,3 +28,24 @@ export const GET_STATS = gql`
     }
   }
 `;
+
+export const QUERY_MATCHUPS = gql`
+  query Matchups {
+    matchups {
+      _id
+      tech1
+      tech2
+      tech1_votes
+      tech2_votes
+    }
+  }
+`;
+
+export const QUERY_TECH = gql`
+  query Tech {
+    tech {
+      _id
+      name
+    }
+  }
+`;

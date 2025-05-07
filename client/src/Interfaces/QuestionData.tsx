@@ -1,7 +1,7 @@
 export interface QuestionData {
-
-  front: string | null;
-  back: string | null;
-  id?:number
+  _id: string;
+  word: string;
+  translation: string;
+  options: string[];
 }
 

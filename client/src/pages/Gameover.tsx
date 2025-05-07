@@ -10,7 +10,7 @@ interface GameOverProps {
 }
 
 const GameOverPage: React.FC<GameOverProps> = ({ score, onTryAgain }) => {
-  const styles: React.CSSProperties = {
+  const styles = {
     container: {
       fontFamily: 'Arial, sans-serif',
       display: 'flex',
@@ -20,21 +20,21 @@ const GameOverPage: React.FC<GameOverProps> = ({ score, onTryAgain }) => {
       minHeight: '100vh',
       margin: 0,
       backgroundColor: '#f0f0f0',
-    },
+    } as React.CSSProperties,
     heading: {
-      fontSize: '4em', // Large text
-      fontWeight: 'bold', // Bold text
+      fontSize: '4em',
+      fontWeight: 'bold',
       marginBottom: '20px',
-    },
+    } as React.CSSProperties,
     button: {
       padding: '10px 20px',
       fontSize: '1.2em',
       cursor: 'pointer',
       marginBottom: '20px',
-    },
+    } as React.CSSProperties,
     score: {
       fontSize: '1.5em',
-    },
+    } as React.CSSProperties,
   };
 
   return (
