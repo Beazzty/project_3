@@ -15,6 +15,7 @@ import LoginPage from './components/pages/LoginPage';
 import RegisterPage from './components/pages/RegisterPage';
 import QuizPage from './components/pages/QuizPage';
 import StatsPage from './components/pages/StatsPage';
+import SkillSelect from './pages/SkillSelect';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -46,6 +47,7 @@ const router = createBrowserRouter([
       { path: 'register', element: <RegisterPage /> },
       { path: 'quiz', element: <QuizPage /> },
       { path: 'stats', element: <StatsPage /> },
+      { path: 'select', element: <SkillSelect /> },
     ],
   },
 ]);

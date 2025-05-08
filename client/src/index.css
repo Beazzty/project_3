@@ -1,7 +1,188 @@
-{
-    margin: 0;
+:root {
+  --mexican-green: #006847;
+  --mexican-red: #CE1126;
+  --mexican-white: #FFFFFF;
+  --mexican-gold: #C4A777;
+  --mexican-dark-green: #004225;
+  --mexican-light-green: #E8F5E9;
+  --mexican-orange: #FF8C00;
+  --mexican-yellow: #FFD700;
+  --mexican-purple: #800080;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    height: 100vh;
-    background-image: linear-gradient(black, grey);
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, var(--mexican-light-green) 0%, var(--mexican-white) 50%, var(--mexican-gold) 100%);
+  color: var(--mexican-dark-green);
+  background-attachment: fixed;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--mexican-light-green);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mexican-green);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mexican-dark-green);
+}
+
+/* Button styles */
+.btn-primary {
+  background: linear-gradient(45deg, var(--mexican-green), var(--mexican-dark-green));
+  color: var(--mexican-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 104, 71, 0.3);
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  transition: 0.5s;
+}
+
+.btn-primary:hover::after {
+  left: 100%;
+}
+
+.btn-secondary {
+  background: linear-gradient(45deg, var(--mexican-red), #a30d1e);
+  color: var(--mexican-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(206, 17, 38, 0.3);
+}
+
+.btn-secondary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  transition: 0.5s;
+}
+
+.btn-secondary:hover::after {
+  left: 100%;
+}
+
+/* Card styles */
+.card {
+  background: var(--mexican-white);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 104, 71, 0.15);
+  border: 2px solid rgba(0, 104, 71, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--mexican-green), var(--mexican-gold), var(--mexican-red));
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 15px 40px rgba(0, 104, 71, 0.2);
+}
+
+/* Form input styles */
+input, select {
+  transition: all 0.3s ease;
+  border: 2px solid rgba(0, 104, 71, 0.2);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background: var(--mexican-white);
+}
+
+input:focus, select:focus {
+  border-color: var(--mexican-green);
+  box-shadow: 0 0 0 3px rgba(0, 104, 71, 0.1);
+  outline: none;
+}
+
+/* Animation keyframes */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Fun decorative elements */
+.decorative-border {
+  position: relative;
+  padding: 1rem;
+}
+
+.decorative-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: linear-gradient(45deg, var(--mexican-green), var(--mexican-gold), var(--mexican-red)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
 }

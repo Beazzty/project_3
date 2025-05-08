@@ -57,9 +57,12 @@ const QuizPage: FC = () => {
   const navigate = useNavigate()
 
   const storedUser = localStorage.getItem('user')
-  const level: Level = storedUser
+  const selectedLevel = localStorage.getItem('selectedLevel')
+  const defaultLevel: Level = storedUser
     ? JSON.parse(storedUser).skillLevel
     : 'BEGINNER'
+  
+  const level: Level = (selectedLevel as Level) || defaultLevel
 
   const { data, loading, error } = useQuery<
     FlashcardsByLevelData,
